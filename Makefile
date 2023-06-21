@@ -20,10 +20,12 @@ studio:
 
 MODULE_NAME:=""
 module:
-	@nest g module $(MODULE_NAME)
+	@nest g module $(MODULE_NAME) --no-spec
 
 service:
 	@nest g service $(MODULE_NAME) --no-spec
 
 controller:
 	@nest g controller $(MODULE_NAME)
+
+module-full: module service controller
