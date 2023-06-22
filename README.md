@@ -74,6 +74,11 @@ Nest is [MIT licensed](LICENSE).
 
 ### Dependencies Installed
 ```shell
+    yarn add -D prisma@client
+    yarn add -D prisma
+    yarn add @prisma/client
     yarn add class-validator class-transformer
     yarn add argon2
+    yarn add @prisma/client
+    yarn add @nestjs/config
 ```
