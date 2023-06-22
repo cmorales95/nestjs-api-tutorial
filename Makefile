@@ -6,17 +6,25 @@ infra-up:
 infra-down:
 	@docker compose down --remove-orphans
 
+infra-restart: infra-down infra-up
+	@sleep 1
+	@make migrate-deploy
+
 run:
 	@yarn start:dev
 
 migrate-dev:
 	@npx prisma migrate dev
 
+migrate-deploy:
+	@npx prisma migrate deploy
+
 generate:
 	@npx prisma generate
 
 studio:
 	@npx prisma studio
+
 
 MODULE_NAME:=""
 module:
