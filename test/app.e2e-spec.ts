@@ -3,7 +3,7 @@ import { AppModule } from '../src/app.module';
 import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import * as pactum from 'pactum';
 import { PrismaService } from '../src/prisma/prisma.service';
-import { AuthDto } from '../src/dto';
+import { AuthDto, EditUserDto } from '../src/dto';
 import { sleep } from 'pactum';
 
 describe('APP e2e', () => {
@@ -29,12 +29,12 @@ describe('APP e2e', () => {
     pactum.request.setBaseUrl('http://localhost:3333');
   });
 
-  const dto: AuthDto = {
-    email: 'test@email.com',
-    password: '123456',
-  };
-
   describe('Auth', () => {
+    const dto: AuthDto = {
+      email: 'test@email.com',
+      password: '123456',
+    };
+
     describe('Sign up', () => {
       it('should throw if email is empty', () => {
         return pactum
@@ -72,7 +72,7 @@ describe('APP e2e', () => {
           .withBody({ password: dto.password })
           .expectStatus(HttpStatus.BAD_REQUEST);
       });
-      it('should throw if password is empty', () => {
+      it('should throw if pas' + 'sword is empty', () => {
         return pactum
           .spec()
           .post('/auth/signin')
@@ -107,7 +107,24 @@ describe('APP e2e', () => {
           .expectStatus(HttpStatus.OK);
       });
     });
-    describe('Edit User', () => {});
+    describe('Edit User', () => {
+      it('should edit user', () => {
+        const dto = {
+          firstName: 'James',
+          email: 'new-email@email.com',
+        };
+        return pactum
+          .spec()
+          .patch('/users')
+          .withHeaders({
+            Authorization: 'Bearer $S{token}',
+          })
+          .withBody(dto)
+          .expectStatus(HttpStatus.OK)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.email);
+      });
+    });
   });
   describe('Bookmarks', () => {
     describe('Create bookmark', () => {});
