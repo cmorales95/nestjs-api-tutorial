@@ -81,4 +81,6 @@ Nest is [MIT licensed](LICENSE).
     yarn add argon2
     yarn add @prisma/client
     yarn add @nestjs/config
+    yarn add @nestjs/passport passport @nestjs/jwt passport-jwt
+    yarn add -D @types/passport-jwt
 ```
