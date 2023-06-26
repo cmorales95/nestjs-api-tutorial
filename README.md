@@ -83,4 +83,6 @@ Nest is [MIT licensed](LICENSE).
     yarn add @nestjs/config
     yarn add @nestjs/passport passport @nestjs/jwt passport-jwt
     yarn add -D @types/passport-jwt
+    yarn add -D pactum
+    yarn add -D dotenv-cli
 ```
