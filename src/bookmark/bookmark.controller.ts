@@ -12,10 +12,9 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { BookmarkService } from './bookmark.service';
-import { CreateBookmarkDto } from './dto/create-bookmark.dto';
-import { UpdateBookmarkDto } from './dto/update-bookmark.dto';
 import { JwtGuard } from '../guard';
 import { GetUser } from '../decorator';
+import { CreateBookmarkDto, UpdateBookmarkDto } from './dto';
 
 @UseGuards(JwtGuard)
 @Controller('bookmarks')
